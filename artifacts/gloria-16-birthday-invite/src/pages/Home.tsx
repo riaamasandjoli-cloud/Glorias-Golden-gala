@@ -15,10 +15,8 @@ type ActionName = 'wishlist' | 'location' | 'dress-code' | 'rsvp' | null;
 type RsvpStatus = 'idle' | 'attending' | 'declined';
 
 const eventDetails = {
-  date: 'Saturday, September 12, 2026',
-  time: '7:00 PM',
-  venue: 'The Rosewood Estate',
-  address: '18 Rosewood Lane · Garden Terrace',
+  date: '7 November 2026',
+  time: '13h00',
 };
 
 const photos = [
@@ -255,7 +253,7 @@ function Invitation() {
       <section className="hero-section page-section" aria-labelledby="hero-title">
         <div className="hero-topline">
           <span>G · XVI</span>
-          <span>12 · 09 · 26</span>
+          <span>07 · 11 · 26</span>
         </div>
         <div className="hero-monogram" aria-hidden="true">
           <span>G</span>
@@ -337,15 +335,6 @@ function Invitation() {
               <div>
                 <span className="event-label">Time</span>
                 <strong data-testid="text-event-time">{eventDetails.time}</strong>
-              </div>
-            </div>
-            <div className="event-rule" />
-            <div className="event-line">
-              <MapPin size={17} strokeWidth={1.2} />
-              <div>
-                <span className="event-label">Venue</span>
-                <strong data-testid="text-event-venue">{eventDetails.venue}</strong>
-                <small>{eventDetails.address}</small>
               </div>
             </div>
           </div>
