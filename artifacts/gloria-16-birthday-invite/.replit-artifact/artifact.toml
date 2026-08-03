@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Gloria's 16th Birthday Invitation"
+description = "A one-page digital birthday invitation for Gloria's 16th birthday, designed with a deep burgundy wine background, gold accents, elegant Cinzel typography, and smooth fade-in motion."
+version = "1.0.0"
+id = "artifacts/gloria-16-birthday-invite"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25322
+
+[services.development]
+run = "pnpm --filter @workspace/gloria-16-birthday-invite run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/gloria-16-birthday-invite", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/gloria-16-birthday-invite/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25322"
+BASE_PATH = "/"
