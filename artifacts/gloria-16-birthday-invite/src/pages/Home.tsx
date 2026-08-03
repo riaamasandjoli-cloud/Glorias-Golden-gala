@@ -23,15 +23,18 @@ const eventDetails = {
 
 const photos = [
   {
-    alt: 'Placeholder for Gloria portrait in evening light',
+    src: '/images/gloria-hero.jpg',
+    alt: 'Gloria holding a birthday candle in warm sunlight',
     caption: 'sixteen & luminous',
   },
   {
-    alt: 'Placeholder for elegant Gloria portrait',
+    src: '/images/gloria-new-chapter.jpg',
+    alt: 'Young Gloria looking at the camera in her school uniform',
     caption: 'a new chapter',
   },
   {
-    alt: 'Placeholder for Gloria portrait with a graceful pose',
+    src: '/images/gloria-rsvp.jpg',
+    alt: 'Close portrait of Gloria with braided hair',
     caption: 'the guest of honor',
   },
 ];
@@ -151,24 +154,22 @@ function EnvelopeGate({ onOpen }: { onOpen: () => void }) {
 function PhotoFrame({
   photo,
   index,
+  className = '',
 }: {
   photo: (typeof photos)[number];
   index: number;
+  className?: string;
 }) {
   return (
     <motion.figure
-      className={`photo-frame photo-frame-${index + 1}`}
+      className={`photo-frame photo-frame-${index + 1} ${className}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8, delay: index * 0.08 }}
     >
       <div className="photo-image-wrap">
-        <div className="photo-placeholder" role="img" aria-label={photo.alt}>
-          <span className="photo-placeholder-monogram">G</span>
-          <span className="photo-placeholder-label">Photo to come</span>
-          <span className="photo-placeholder-number">XVI</span>
-        </div>
+        <img className="photo-image" src={photo.src} alt={photo.alt} loading="lazy" />
         <span className="photo-shine" aria-hidden="true" />
       </div>
       <figcaption>{photo.caption}</figcaption>
@@ -286,6 +287,18 @@ function Invitation() {
           Join us for an evening of candlelight, champagne sparkle, and the first page of
           everything that comes next.
         </motion.p>
+        <motion.figure
+          className="hero-photo-frame"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.02, duration: 0.9 }}
+        >
+          <div className="photo-image-wrap">
+            <img className="photo-image" src={photos[0].src} alt={photos[0].alt} />
+            <span className="photo-shine" aria-hidden="true" />
+          </div>
+          <figcaption>{photos[0].caption}</figcaption>
+        </motion.figure>
         <a className="scroll-cue" href="#details" data-testid="link-scroll-details">
           <span>Scroll to enter</span>
           <ArrowDown size={16} strokeWidth={1.2} />
@@ -343,14 +356,12 @@ function Invitation() {
         <div className="section-heading section-heading-centered">
           <span className="section-number">02</span>
           <div>
-            <p className="section-eyebrow">A few frames from her story</p>
-            <h2 id="photos-title">The guest of honor</h2>
+            <p className="section-eyebrow">A moment between chapters</p>
+            <h2 id="photos-title">A new chapter</h2>
           </div>
         </div>
-        <div className="photo-grid">
-          {photos.map((photo, index) => (
-            <PhotoFrame key={photo.caption} photo={photo} index={index} />
-          ))}
+        <div className="photo-feature">
+          <PhotoFrame photo={photos[1]} index={1} />
         </div>
       </section>
 
@@ -410,6 +421,19 @@ function Invitation() {
           <a className="text-link" href="mailto:gloria@example.com?subject=Gloria%27s%20Birthday%20Gift">
             Ask about the wishlist <span aria-hidden="true">↗</span>
           </a>
+        </div>
+      </section>
+
+      <section className="pre-rsvp-photo-section page-section" aria-labelledby="pre-rsvp-photo-title">
+        <div className="section-heading section-heading-centered">
+          <span className="section-number">04</span>
+          <div>
+            <p className="section-eyebrow">Before the celebration begins</p>
+            <h2 id="pre-rsvp-photo-title">A candlelit wish</h2>
+          </div>
+        </div>
+        <div className="photo-feature photo-feature-rsvp">
+          <PhotoFrame photo={photos[2]} index={2} />
         </div>
       </section>
 
