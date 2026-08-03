@@ -1,0 +1,19 @@
+kind = "design-system"
+previewPath = "/gloria-royal-invitation-ds/"
+title = "Gloria Royal Invitation Design System"
+description = "A reusable visual language extracted from Gloria's 16th birthday invitation: burgundy wine surfaces, metallic gold accents, Cinzel display typography, refined editorial body copy, framed imagery, royal ornament, and graceful motion."
+version = "1.0.0"
+id = "artifacts/gloria-royal-invitation-ds"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/gloria-royal-invitation-ds/" ]
+localPort = 24751
+
+[services.development]
+run = "pnpm --filter @workspace/gloria-royal-invitation-ds run dev"
+
+[services.env]
+PORT = "24751"
+BASE_PATH = "/gloria-royal-invitation-ds/"
