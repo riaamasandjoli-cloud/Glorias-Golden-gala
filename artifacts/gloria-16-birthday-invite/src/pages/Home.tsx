@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowDown,
   CalendarDays,
-  Check,
   Gift,
   MapPin,
   Phone,
@@ -12,7 +11,6 @@ import {
 import { useState } from 'react';
 
 type ActionName = 'wishlist' | 'location' | 'dress-code' | 'rsvp' | null;
-type RsvpStatus = 'idle' | 'attending' | 'declined';
 
 const eventDetails = {
   date: '7 November 2026',
@@ -229,7 +227,6 @@ function ActionButton({
 }
 
 function Invitation() {
-  const [rsvpStatus, setRsvpStatus] = useState<RsvpStatus>('idle');
   const [activeAction, setActiveAction] = useState<ActionName>(null);
 
   const revealAction = (action: Exclude<ActionName, null>) => {
@@ -431,50 +428,67 @@ function Invitation() {
         <p className="section-eyebrow">Kindly reply</p>
         <h2 id="rsvp-title">Will you join us?</h2>
         <p className="rsvp-copy">We hope to celebrate this beautiful beginning with you.</p>
-        <AnimatePresence mode="wait">
-          {rsvpStatus === 'idle' ? (
-            <motion.div
-              className="rsvp-actions"
-              key="rsvp-actions"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
+        <motion.form
+          className="rsvp-form"
+          action="https://formspree.io/f/mjybbbwa"
+          method="POST"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          data-testid="form-rsvp"
+        >
+          <label className="rsvp-field rsvp-field-wide" htmlFor="rsvp-name">
+            <span>Full name</span>
+            <input
+              id="rsvp-name"
+              type="text"
+              name="name"
+              required
+              autoComplete="name"
+              placeholder="Your name"
+              data-testid="input-rsvp-name"
+            />
+          </label>
+          <label className="rsvp-field rsvp-field-wide" htmlFor="rsvp-attendance">
+            <span>Attendance status</span>
+            <select
+              id="rsvp-attendance"
+              name="attendance"
+              required
+              defaultValue=""
+              data-testid="select-rsvp-attendance"
             >
-              <button
-                type="button"
-                className="rsvp-primary"
-                onClick={() => setRsvpStatus('attending')}
-                data-testid="button-rsvp-attending"
-              >
-                Accept with pleasure
-              </button>
-              <button
-                type="button"
-                className="rsvp-secondary"
-                onClick={() => setRsvpStatus('declined')}
-                data-testid="button-rsvp-decline"
-              >
-                Decline with regret
-              </button>
-            </motion.div>
-          ) : (
-            <motion.div
-              className="rsvp-confirmation"
-              key="rsvp-confirmation"
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              role="status"
-              data-testid="status-rsvp"
-            >
-              <Check size={18} strokeWidth={1.4} />
-              <span>
-                {rsvpStatus === 'attending'
-                  ? 'We cannot wait to celebrate with you.'
-                  : 'You will be missed, with love.'}
-              </span>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              <option value="" disabled>
+                Select your response
+              </option>
+              <option value="Yes, I will be attending">Yes, I will be attending</option>
+              <option value="Regrettably cannot make it">Regrettably cannot make it</option>
+            </select>
+          </label>
+          <label className="rsvp-field" htmlFor="rsvp-guests">
+            <span>Plus one / guest name(s)</span>
+            <input
+              id="rsvp-guests"
+              type="text"
+              name="guests"
+              placeholder="If applicable"
+              data-testid="input-rsvp-guests"
+            />
+          </label>
+          <label className="rsvp-field" htmlFor="rsvp-song">
+            <span>Song request</span>
+            <input
+              id="rsvp-song"
+              type="text"
+              name="song_request"
+              placeholder="Make it memorable"
+              data-testid="input-rsvp-song"
+            />
+          </label>
+          <button className="rsvp-submit" type="submit" data-testid="button-rsvp-submit">
+            Confirm RSVP
+          </button>
+        </motion.form>
       </section>
 
       <footer className="invitation-footer">

@@ -910,53 +910,103 @@ a:focus-visible {
   font-size: 14px;
 }
 
-.rsvp-actions {
-  display: flex;
-  align-items: center;
+.rsvp-form {
+  display: grid;
+  width: min(100%, 650px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 17px;
+  margin-top: 4px;
+  text-align: left;
 }
 
-.rsvp-primary,
-.rsvp-secondary {
+.rsvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.rsvp-field-wide {
+  grid-column: 1 / -1;
+}
+
+.rsvp-field > span {
+  color: var(--gold-light);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.rsvp-field input,
+.rsvp-field select {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid rgba(212, 175, 55, 0.46);
+  border-radius: 0;
+  outline: none;
+  background: rgba(43, 8, 11, 0.72);
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: 13px;
+  transition: border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.rsvp-field input::placeholder {
+  color: rgba(203, 189, 168, 0.56);
+}
+
+.rsvp-field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--gold-light) 50%),
+    linear-gradient(135deg, var(--gold-light) 50%, transparent 50%);
+  background-position:
+    calc(100% - 17px) 20px,
+    calc(100% - 12px) 20px;
+  background-repeat: no-repeat;
+  background-size: 5px 5px, 5px 5px;
   cursor: pointer;
-  padding: 13px 21px;
+}
+
+.rsvp-field select option {
+  background: var(--wine);
+  color: var(--cream);
+}
+
+.rsvp-field input:focus,
+.rsvp-field select:focus {
+  border-color: var(--gold-light);
+  background-color: rgba(43, 8, 11, 0.94);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+.rsvp-submit {
+  grid-column: 1 / -1;
+  justify-self: center;
+  min-width: 210px;
+  margin-top: 8px;
+  cursor: pointer;
+  border: 1px solid var(--gold);
+  padding: 14px 24px;
+  background: linear-gradient(145deg, #f1d97c, var(--gold));
+  color: var(--wine);
   font-family: var(--sans);
   font-size: 10px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  transition: 250ms ease;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  transition: transform 180ms ease, background 220ms ease, box-shadow 220ms ease;
 }
 
-.rsvp-primary {
-  border: 1px solid var(--gold);
-  background: var(--gold);
-  color: var(--wine);
-}
-
-.rsvp-primary:hover {
+.rsvp-submit:hover {
   background: var(--gold-light);
   box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
 }
 
-.rsvp-secondary {
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  background: transparent;
-  color: var(--gold-light);
-}
-
-.rsvp-secondary:hover {
-  border-color: var(--gold);
-  background: rgba(212, 175, 55, 0.08);
-}
-
-.rsvp-confirmation {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  color: var(--gold-light);
-  font-family: var(--display);
-  font-size: 13px;
-  letter-spacing: 0.04em;
+.rsvp-submit:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.24);
 }
 
 .invitation-footer {
@@ -1255,13 +1305,17 @@ a:focus-visible {
     gap: 32px;
   }
 
-  .rsvp-actions {
-    flex-direction: column;
-    gap: 11px;
+  .rsvp-form {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
-  .rsvp-primary,
-  .rsvp-secondary {
+  .rsvp-field-wide,
+  .rsvp-submit {
+    grid-column: auto;
+  }
+
+  .rsvp-submit {
     width: 230px;
   }
 
