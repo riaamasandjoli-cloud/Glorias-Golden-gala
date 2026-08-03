@@ -23,40 +23,16 @@ const eventDetails = {
 
 const photos = [
   {
-    src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85',
-    alt: 'Portrait in evening light',
+    alt: 'Placeholder for Gloria portrait in evening light',
     caption: 'sixteen & luminous',
   },
   {
-    src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=85',
-    alt: 'Elegant portrait with soft curls',
+    alt: 'Placeholder for elegant Gloria portrait',
     caption: 'a new chapter',
   },
   {
-    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85',
-    alt: 'Portrait with a graceful pose',
+    alt: 'Placeholder for Gloria portrait with a graceful pose',
     caption: 'the guest of honor',
-  },
-];
-
-const moodBoard = [
-  {
-    src: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85',
-    alt: 'Candlelit dinner table with gold details',
-    title: 'Golden hour',
-    text: 'Warm light, soft shine',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=85',
-    alt: 'Elegant black and white formalwear',
-    title: 'Black tie',
-    text: 'Polished and timeless',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=85',
-    alt: 'Celebration lights glowing at night',
-    title: 'After dark',
-    text: 'A little drama, please',
   },
 ];
 
@@ -188,7 +164,11 @@ function PhotoFrame({
       transition={{ duration: 0.8, delay: index * 0.08 }}
     >
       <div className="photo-image-wrap">
-        <img className="photo-image" src={photo.src} alt={photo.alt} loading="lazy" />
+        <div className="photo-placeholder" role="img" aria-label={photo.alt}>
+          <span className="photo-placeholder-monogram">G</span>
+          <span className="photo-placeholder-label">Photo to come</span>
+          <span className="photo-placeholder-number">XVI</span>
+        </div>
         <span className="photo-shine" aria-hidden="true" />
       </div>
       <figcaption>{photo.caption}</figcaption>
@@ -201,14 +181,41 @@ function ActionButton({
   label,
   onClick,
   active,
+  href,
+  target,
+  rel,
   testId,
 }: {
   icon: React.ReactNode;
   label: string;
-  onClick: () => void;
-  active: boolean;
+  onClick?: () => void;
+  active?: boolean;
+  href?: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  rel?: string;
   testId: string;
 }) {
+  const content = (
+    <>
+      <span className="action-icon">{icon}</span>
+      <span>{label}</span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        className={`action-button ${active ? 'action-button-active' : ''}`}
+        href={href}
+        target={target}
+        rel={rel}
+        data-testid={testId}
+      >
+        {content}
+      </a>
+    );
+  }
+
   return (
     <button
       className={`action-button ${active ? 'action-button-active' : ''}`}
@@ -217,8 +224,7 @@ function ActionButton({
       aria-pressed={active}
       data-testid={testId}
     >
-      <span className="action-icon">{icon}</span>
-      <span>{label}</span>
+      {content}
     </button>
   );
 }
@@ -343,7 +349,7 @@ function Invitation() {
         </div>
         <div className="photo-grid">
           {photos.map((photo, index) => (
-            <PhotoFrame key={photo.src} photo={photo} index={index} />
+            <PhotoFrame key={photo.caption} photo={photo} index={index} />
           ))}
         </div>
       </section>
@@ -357,29 +363,40 @@ function Invitation() {
           </div>
         </div>
         <div className="dress-intro">
-          <p>Black tie, with a flash of gold.</p>
-          <span>Think candlelit glamour, tailored silhouettes, and a little shine.</span>
+          <p>Drape yourselves in royalty.</p>
+          <span>Dress to impress in formal, high-fashion attire featuring rich tones of Black, Metallic Gold, and Deep Red / Burgundy.</span>
         </div>
-        <div className="mood-board">
-          {moodBoard.map((item, index) => (
-            <motion.figure
-              className="mood-tile"
-              key={item.title}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.75, delay: index * 0.12 }}
-            >
-              <div className="mood-image-wrap">
-                <img src={item.src} alt={item.alt} className="photo-image" loading="lazy" />
-              </div>
-              <figcaption>
-                <strong>{item.title}</strong>
-                <span>{item.text}</span>
-              </figcaption>
-            </motion.figure>
-          ))}
-        </div>
+        <motion.div
+          className="dress-code-panel"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.75 }}
+        >
+          <div className="dress-code-copy">
+            <p className="dress-code-kicker">The royal palette</p>
+            <h3>Make an entrance worthy of the evening.</h3>
+            <p>
+              Think sleek silhouettes, immaculate tailoring, and majestic details.
+              Let your look feel polished, dramatic, and unapologetically elegant
+              while staying within the evening&apos;s signature palette.
+            </p>
+          </div>
+          <div className="dress-colors" aria-label="Dress code colors">
+            <span className="dress-color dress-color-black">
+              <i aria-hidden="true" />
+              <strong>Black</strong>
+            </span>
+            <span className="dress-color dress-color-gold">
+              <i aria-hidden="true" />
+              <strong>Metallic Gold</strong>
+            </span>
+            <span className="dress-color dress-color-burgundy">
+              <i aria-hidden="true" />
+              <strong>Deep Red / Burgundy</strong>
+            </span>
+          </div>
+        </motion.div>
       </section>
 
       <section className="gifts-section page-section" id="gifts" aria-labelledby="gifts-title">
@@ -456,15 +473,15 @@ function Invitation() {
         <ActionButton
           icon={<Gift size={18} strokeWidth={1.3} />}
           label="Wishlist / Gifts 🎁"
-          onClick={() => revealAction('wishlist')}
-          active={activeAction === 'wishlist'}
+          href="https://giftful.com/wishlists/UYN0BecKWsFkSnswpcWo"
           testId="button-wishlist"
         />
         <ActionButton
           icon={<MapPin size={18} strokeWidth={1.3} />}
           label="Location / Map 📍"
-          onClick={() => revealAction('location')}
-          active={activeAction === 'location'}
+          href="https://maps.app.goo.gl/HMwKSHsR8eTuvxn66"
+          target="_blank"
+          rel="noreferrer"
           testId="button-location"
         />
         <ActionButton
@@ -477,8 +494,7 @@ function Invitation() {
         <ActionButton
           icon={<Phone size={18} strokeWidth={1.3} />}
           label="RSVP / Contact 📞"
-          onClick={() => revealAction('rsvp')}
-          active={activeAction === 'rsvp'}
+          href="https://wa.me/27711290701"
           testId="button-rsvp-contact"
         />
       </nav>
