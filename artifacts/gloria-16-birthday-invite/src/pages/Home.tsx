@@ -459,10 +459,10 @@ function Invitation() {
               data-testid="select-rsvp-attendance"
             >
               <option value="" disabled>
-                Select your response
+                Select Attendance...
               </option>
-              <option value="Yes, I will be attending">Yes, I will be attending</option>
-              <option value="Regrettably cannot make it">Regrettably cannot make it</option>
+              <option value="Attending">Yes, I will be attending</option>
+              <option value="Not Attending">Regrettably cannot make it</option>
             </select>
           </label>
           <label className="rsvp-field" htmlFor="rsvp-guests">
