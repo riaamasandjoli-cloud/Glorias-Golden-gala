@@ -787,6 +787,19 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
+.countdown-complete {
+  color: var(--gold-light);
+  font-family: var(--display);
+  font-size: clamp(24px, 4.4vw, 50px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  text-shadow:
+    0 0 10px rgba(242, 220, 138, 0.38),
+    0 0 28px rgba(212, 175, 55, 0.25);
+  animation: queen-arrived-pulse 2.8s ease-in-out infinite;
+}
+
 .dress-intro {
   display: flex;
   align-items: baseline;
@@ -1162,6 +1175,53 @@ a:focus-visible {
   bottom: 13%;
 }
 
+.event-day-banner {
+  position: fixed;
+  z-index: 1100;
+  top: 18px;
+  left: 50%;
+  display: flex;
+  width: min(calc(100% - 32px), 760px);
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px 14px 20px;
+  border: 1px solid var(--gold);
+  background:
+    linear-gradient(135deg, rgba(74, 16, 23, 0.98), rgba(24, 4, 6, 0.98)),
+    var(--wine);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34), 0 0 24px rgba(212, 175, 55, 0.13);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: clamp(10px, 1.5vw, 13px);
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.event-day-banner > span {
+  flex: 1;
+}
+
+.event-day-banner-close {
+  display: grid;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(212, 175, 55, 0.7);
+  background: transparent;
+  color: var(--gold-light);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.event-day-banner-close:hover {
+  background: var(--gold);
+  color: var(--wine);
+}
+
 .action-dock {
   position: fixed;
   z-index: 1000;
@@ -1262,6 +1322,19 @@ a:focus-visible {
   }
 }
 
+@keyframes queen-arrived-pulse {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scale(0.99);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+}
+
 @media (max-width: 720px) {
   .envelope-intro,
   .envelope-footer {
@@ -1341,6 +1414,17 @@ a:focus-visible {
   .countdown-box span {
     margin-top: 9px;
     letter-spacing: 0.12em;
+  }
+
+  .countdown-complete {
+    font-size: clamp(20px, 6.2vw, 31px);
+  }
+
+  .event-day-banner {
+    top: 12px;
+    width: calc(100% - 24px);
+    padding: 12px 10px 12px 14px;
+    font-size: 10px;
   }
 
   .details-layout {

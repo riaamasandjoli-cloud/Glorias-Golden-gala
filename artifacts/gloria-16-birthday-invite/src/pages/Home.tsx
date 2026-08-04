@@ -7,6 +7,7 @@ import {
   Phone,
   Shirt,
   Sparkles,
+  X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -19,6 +20,7 @@ type CountdownValues = {
 };
 
 const countdownTarget = new Date('2026-11-07T13:00:00+02:00').getTime();
+const eventDayStart = new Date('2026-11-07T00:00:00+02:00').getTime();
 
 const eventDetails = {
   date: '7 November 2026',
@@ -246,12 +248,44 @@ function getCountdownValues(): CountdownValues {
   };
 }
 
+function EventDayBanner() {
+  const [isVisible, setIsVisible] = useState(() => Date.now() >= eventDayStart);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.aside
+          className="event-day-banner"
+          role="status"
+          aria-live="polite"
+          initial={{ opacity: 0, y: -120 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -120 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span>🥂 TODAY IS THE DAY! Welcome to Gloria&apos;s 16th Birthday Gala.</span>
+          <button
+            type="button"
+            className="event-day-banner-close"
+            aria-label="Dismiss welcome banner"
+            onClick={() => setIsVisible(false)}
+          >
+            <X size={17} strokeWidth={1.5} />
+          </button>
+        </motion.aside>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function CountdownTimer() {
   const [countdown, setCountdown] = useState<CountdownValues>(getCountdownValues);
+  const [hasArrived, setHasArrived] = useState(() => Date.now() >= countdownTarget);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setCountdown(getCountdownValues());
+      setHasArrived(Date.now() >= countdownTarget);
     }, 1000);
 
     return () => window.clearInterval(timer);
@@ -270,14 +304,20 @@ function CountdownTimer() {
         <p className="section-eyebrow">The golden hour approaches</p>
         <h2 id="countdown-title">Counting down to the celebration</h2>
       </div>
-      <div className="countdown-grid" aria-live="polite">
-        {units.map((unit) => (
-          <div className="countdown-box" key={unit.key}>
-            <strong>{String(unit.value).padStart(2, '0')}</strong>
-            <span>{unit.label}</span>
-          </div>
-        ))}
-      </div>
+      {hasArrived ? (
+        <div className="countdown-complete" role="status" aria-live="polite">
+          THE QUEEN HAS ARRIVED. LET THE BALL BEGIN 👑✨
+        </div>
+      ) : (
+        <div className="countdown-grid" aria-live="polite">
+          {units.map((unit) => (
+            <div className="countdown-box" key={unit.key}>
+              <strong>{String(unit.value).padStart(2, '0')}</strong>
+              <span>{unit.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -592,6 +632,7 @@ export default function Home() {
 
   return (
     <div className="invitation-app">
+      <EventDayBanner />
       <AnimatePresence mode="wait">
         {!isOpen ? (
           <EnvelopeGate key="envelope" onOpen={() => setIsOpen(true)} />

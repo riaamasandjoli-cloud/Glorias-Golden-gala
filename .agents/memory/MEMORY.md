@@ -1,0 +1,1 @@
+- [Event timezone handling](event-timezone-handling.md) — birthday timing uses explicit South Africa offsets rather than the browser’s local timezone.
