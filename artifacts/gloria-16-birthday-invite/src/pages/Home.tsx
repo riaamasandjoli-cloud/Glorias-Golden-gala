@@ -8,9 +8,17 @@ import {
   Shirt,
   Sparkles,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type ActionName = 'wishlist' | 'location' | 'dress-code' | 'rsvp' | null;
+type CountdownValues = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+const countdownTarget = new Date('2026-11-07T13:00:00+02:00').getTime();
 
 const eventDetails = {
   date: '7 November 2026',
@@ -226,6 +234,54 @@ function ActionButton({
   );
 }
 
+function getCountdownValues(): CountdownValues {
+  const remaining = Math.max(0, countdownTarget - Date.now());
+  const totalSeconds = Math.floor(remaining / 1000);
+
+  return {
+    days: Math.floor(totalSeconds / 86400),
+    hours: Math.floor((totalSeconds % 86400) / 3600),
+    minutes: Math.floor((totalSeconds % 3600) / 60),
+    seconds: totalSeconds % 60,
+  };
+}
+
+function CountdownTimer() {
+  const [countdown, setCountdown] = useState<CountdownValues>(getCountdownValues);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setCountdown(getCountdownValues());
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const units = [
+    { key: 'days', label: 'Days', value: countdown.days },
+    { key: 'hours', label: 'Hours', value: countdown.hours },
+    { key: 'minutes', label: 'Mins', value: countdown.minutes },
+    { key: 'seconds', label: 'Secs', value: countdown.seconds },
+  ] as const;
+
+  return (
+    <section className="countdown-section page-section" aria-labelledby="countdown-title">
+      <div className="countdown-heading">
+        <p className="section-eyebrow">The golden hour approaches</p>
+        <h2 id="countdown-title">Counting down to the celebration</h2>
+      </div>
+      <div className="countdown-grid" aria-live="polite">
+        {units.map((unit) => (
+          <div className="countdown-box" key={unit.key}>
+            <strong>{String(unit.value).padStart(2, '0')}</strong>
+            <span>{unit.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Invitation() {
   const [activeAction, setActiveAction] = useState<ActionName>(null);
 
@@ -422,6 +478,8 @@ function Invitation() {
           <PhotoFrame photo={photos[2]} index={2} />
         </div>
       </section>
+
+      <CountdownTimer />
 
       <section className="rsvp-section page-section" id="rsvp" aria-labelledby="rsvp-title">
         <FiligreeDivider />
