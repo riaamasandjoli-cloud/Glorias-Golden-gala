@@ -521,7 +521,7 @@ function Invitation() {
         <ActionButton
           icon={<Phone size={18} strokeWidth={1.3} />}
           label="RSVP / Contact 📞"
-          href="https://wa.me/27711290701"
+          href="https://wa.me/27791290701"
           testId="button-rsvp-contact"
         />
       </nav>
