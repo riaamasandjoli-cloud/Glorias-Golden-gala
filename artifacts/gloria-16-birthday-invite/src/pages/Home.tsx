@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowDown,
   CalendarDays,
@@ -8,10 +8,10 @@ import {
   Shirt,
   Sparkles,
   X,
-} from 'lucide-react';
-import { useEffect, useState } from 'react';
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
-type ActionName = 'wishlist' | 'location' | 'dress-code' | 'rsvp' | null;
+type ActionName = "wishlist" | "location" | "dress-code" | "rsvp" | null;
 type CountdownValues = {
   days: number;
   hours: number;
@@ -19,40 +19,40 @@ type CountdownValues = {
   seconds: number;
 };
 
-const countdownTarget = new Date('2026-11-07T13:00:00+02:00').getTime();
-const eventDayStart = new Date('2026-11-07T00:00:00+02:00').getTime();
+const countdownTarget = new Date("2026-11-07T13:00:00+02:00").getTime();
+const eventDayStart = new Date("2026-11-07T00:00:00+02:00").getTime();
 
 const eventDetails = {
-  date: '7 November 2026',
-  time: '13h00',
+  date: "3 October 2026",
+  time: "13h00",
 };
 
 const photos = [
   {
-    src: '/images/gloria-hero.jpg',
-    alt: 'Gloria holding a birthday candle in warm sunlight',
-    caption: 'sixteen & luminous',
+    src: "/images/gloria-hero.jpg",
+    alt: "Gloria holding a birthday candle on 15th birthday",
+    caption: "sixteen & luminous",
   },
   {
-    src: '/images/gloria-new-chapter.jpg',
-    alt: 'Young Gloria looking at the camera in her school uniform',
-    caption: 'a new chapter',
+    src: "/images/gloria-new-chapter.jpg",
+    alt: "Young Gloria looking at the camera in her school uniform",
+    caption: "a new chapter",
   },
   {
-    src: '/images/gloria-rsvp.jpg',
-    alt: 'Close portrait of Gloria with braided hair',
-    caption: 'the guest of honor',
+    src: "/images/gloria-rsvp.jpg",
+    alt: "Close portrait of Gloria im December",
+    caption: "the queen of the  party",
   },
 ];
 
 const balloons = [
-  { left: '5%', size: 42, delay: '-3s', duration: '19s' },
-  { left: '17%', size: 29, delay: '-11s', duration: '23s' },
-  { left: '32%', size: 54, delay: '-16s', duration: '25s' },
-  { left: '50%', size: 34, delay: '-7s', duration: '20s' },
-  { left: '66%', size: 47, delay: '-19s', duration: '27s' },
-  { left: '80%', size: 30, delay: '-4s', duration: '21s' },
-  { left: '94%', size: 52, delay: '-14s', duration: '24s' },
+  { left: "5%", size: 42, delay: "-3s", duration: "19s" },
+  { left: "17%", size: 29, delay: "-11s", duration: "23s" },
+  { left: "32%", size: 54, delay: "-16s", duration: "25s" },
+  { left: "50%", size: 34, delay: "-7s", duration: "20s" },
+  { left: "66%", size: 47, delay: "-19s", duration: "27s" },
+  { left: "80%", size: 30, delay: "-4s", duration: "21s" },
+  { left: "94%", size: 52, delay: "-14s", duration: "24s" },
 ];
 
 function BalloonField() {
@@ -77,7 +77,10 @@ function BalloonField() {
 
 function FiligreeDivider({ small = false }: { small?: boolean }) {
   return (
-    <div className={`filigree ${small ? 'filigree-small' : ''}`} aria-hidden="true">
+    <div
+      className={`filigree ${small ? "filigree-small" : ""}`}
+      aria-hidden="true"
+    >
       <span />
       <i />
       <b />
@@ -113,7 +116,7 @@ function EnvelopeGate({ onOpen }: { onOpen: () => void }) {
       aria-label="Open Gloria's birthday invitation"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.05, filter: 'blur(12px)' }}
+      exit={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
       transition={{ duration: 0.6 }}
     >
       <div className="envelope-intro">
@@ -126,7 +129,9 @@ function EnvelopeGate({ onOpen }: { onOpen: () => void }) {
         type="button"
         onClick={openEnvelope}
         aria-label="Tap to open Gloria's invitation"
-        animate={isOpening ? { scale: 1.04, opacity: 0.25 } : { scale: 1, opacity: 1 }}
+        animate={
+          isOpening ? { scale: 1.04, opacity: 0.25 } : { scale: 1, opacity: 1 }
+        }
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         data-testid="button-open-invitation"
       >
@@ -160,7 +165,7 @@ function EnvelopeGate({ onOpen }: { onOpen: () => void }) {
 function PhotoFrame({
   photo,
   index,
-  className = '',
+  className = "",
 }: {
   photo: (typeof photos)[number];
   index: number;
@@ -175,7 +180,12 @@ function PhotoFrame({
       transition={{ duration: 0.8, delay: index * 0.08 }}
     >
       <div className="photo-image-wrap">
-        <img className="photo-image" src={photo.src} alt={photo.alt} loading="lazy" />
+        <img
+          className="photo-image"
+          src={photo.src}
+          alt={photo.alt}
+          loading="lazy"
+        />
         <span className="photo-shine" aria-hidden="true" />
       </div>
       <figcaption>{photo.caption}</figcaption>
@@ -212,7 +222,7 @@ function ActionButton({
   if (href) {
     return (
       <a
-        className={`action-button ${active ? 'action-button-active' : ''}`}
+        className={`action-button ${active ? "action-button-active" : ""}`}
         href={href}
         target={target}
         rel={rel}
@@ -225,7 +235,7 @@ function ActionButton({
 
   return (
     <button
-      className={`action-button ${active ? 'action-button-active' : ''}`}
+      className={`action-button ${active ? "action-button-active" : ""}`}
       type="button"
       onClick={onClick}
       aria-pressed={active}
@@ -263,7 +273,9 @@ function EventDayBanner() {
           exit={{ opacity: 0, y: -120 }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span>🥂 TODAY IS THE DAY! Welcome to Gloria&apos;s 16th Birthday Gala.</span>
+          <span>
+            🥂 TODAY IS THE DAY! Welcome to Gloria&apos;s 16th Birthday Gala.
+          </span>
           <button
             type="button"
             className="event-day-banner-close"
@@ -279,8 +291,11 @@ function EventDayBanner() {
 }
 
 function CountdownTimer() {
-  const [countdown, setCountdown] = useState<CountdownValues>(getCountdownValues);
-  const [hasArrived, setHasArrived] = useState(() => Date.now() >= countdownTarget);
+  const [countdown, setCountdown] =
+    useState<CountdownValues>(getCountdownValues);
+  const [hasArrived, setHasArrived] = useState(
+    () => Date.now() >= countdownTarget,
+  );
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -292,14 +307,17 @@ function CountdownTimer() {
   }, []);
 
   const units = [
-    { key: 'days', label: 'Days', value: countdown.days },
-    { key: 'hours', label: 'Hours', value: countdown.hours },
-    { key: 'minutes', label: 'Mins', value: countdown.minutes },
-    { key: 'seconds', label: 'Secs', value: countdown.seconds },
+    { key: "days", label: "Days", value: countdown.days },
+    { key: "hours", label: "Hours", value: countdown.hours },
+    { key: "minutes", label: "Mins", value: countdown.minutes },
+    { key: "seconds", label: "Secs", value: countdown.seconds },
   ] as const;
 
   return (
-    <section className="countdown-section page-section" aria-labelledby="countdown-title">
+    <section
+      className="countdown-section page-section"
+      aria-labelledby="countdown-title"
+    >
       <div className="countdown-heading">
         <p className="section-eyebrow">The golden hour approaches</p>
         <h2 id="countdown-title">Counting down to the celebration</h2>
@@ -312,7 +330,7 @@ function CountdownTimer() {
         <div className="countdown-grid" aria-live="polite">
           {units.map((unit) => (
             <div className="countdown-box" key={unit.key}>
-              <strong>{String(unit.value).padStart(2, '0')}</strong>
+              <strong>{String(unit.value).padStart(2, "0")}</strong>
               <span>{unit.label}</span>
             </div>
           ))}
@@ -328,8 +346,16 @@ function Invitation() {
   const revealAction = (action: Exclude<ActionName, null>) => {
     setActiveAction(action);
     const target =
-      action === 'location' ? 'details' : action === 'dress-code' ? 'dress-code' : action === 'rsvp' ? 'rsvp' : 'gifts';
-    document.getElementById(target)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      action === "location"
+        ? "details"
+        : action === "dress-code"
+          ? "dress-code"
+          : action === "rsvp"
+            ? "rsvp"
+            : "gifts";
+    document
+      .getElementById(target)
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
@@ -343,7 +369,10 @@ function Invitation() {
       <div className="ambient-glow ambient-glow-top" aria-hidden="true" />
       <div className="ambient-glow ambient-glow-bottom" aria-hidden="true" />
 
-      <section className="hero-section page-section" aria-labelledby="hero-title">
+      <section
+        className="hero-section page-section"
+        aria-labelledby="hero-title"
+      >
         <div className="hero-topline">
           <span>G · XVI</span>
           <span>07 · 11 · 26</span>
@@ -375,8 +404,8 @@ function Invitation() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.84, duration: 0.8 }}
         >
-          Join us for an evening of candlelight, champagne sparkle, and the first page of
-          everything that comes next.
+          Join us for an evening of candlelight, champagne sparkle, and the
+          first page of everything that comes next.
         </motion.p>
         <motion.figure
           className="hero-photo-frame"
@@ -385,18 +414,30 @@ function Invitation() {
           transition={{ delay: 1.02, duration: 0.9 }}
         >
           <div className="photo-image-wrap">
-            <img className="photo-image" src={photos[0].src} alt={photos[0].alt} />
+            <img
+              className="photo-image"
+              src={photos[0].src}
+              alt={photos[0].alt}
+            />
             <span className="photo-shine" aria-hidden="true" />
           </div>
           <figcaption>{photos[0].caption}</figcaption>
         </motion.figure>
-        <a className="scroll-cue" href="#details" data-testid="link-scroll-details">
+        <a
+          className="scroll-cue"
+          href="#details"
+          data-testid="link-scroll-details"
+        >
           <span>Scroll to enter</span>
           <ArrowDown size={16} strokeWidth={1.2} />
         </a>
       </section>
 
-      <section className="details-section page-section" id="details" aria-labelledby="details-title">
+      <section
+        className="details-section page-section"
+        id="details"
+        aria-labelledby="details-title"
+      >
         <div className="section-heading">
           <span className="section-number">01</span>
           <div>
@@ -408,8 +449,9 @@ function Invitation() {
           <div className="details-copy">
             <FiligreeDivider />
             <p>
-              Your presence is the finest present. Come dressed for an evening worthy of a
-              brand-new chapter and stay for the dancing, the toasts, and the memories.
+              Your presence is the finest present. Come dressed for an evening
+              worthy of a brand-new chapter and stay for the dancing, the
+              toasts, and the memories.
             </p>
             <FiligreeDivider small />
           </div>
@@ -419,7 +461,9 @@ function Invitation() {
               <CalendarDays size={17} strokeWidth={1.2} />
               <div>
                 <span className="event-label">Date</span>
-                <strong data-testid="text-event-date">{eventDetails.date}</strong>
+                <strong data-testid="text-event-date">
+                  {eventDetails.date}
+                </strong>
               </div>
             </div>
             <div className="event-rule" />
@@ -427,14 +471,19 @@ function Invitation() {
               <Sparkles size={17} strokeWidth={1.2} />
               <div>
                 <span className="event-label">Time</span>
-                <strong data-testid="text-event-time">{eventDetails.time}</strong>
+                <strong data-testid="text-event-time">
+                  {eventDetails.time}
+                </strong>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="photo-section page-section" aria-labelledby="photos-title">
+      <section
+        className="photo-section page-section"
+        aria-labelledby="photos-title"
+      >
         <div className="section-heading section-heading-centered">
           <span className="section-number">02</span>
           <div>
@@ -447,7 +496,11 @@ function Invitation() {
         </div>
       </section>
 
-      <section className="dress-section page-section" id="dress-code" aria-labelledby="dress-title">
+      <section
+        className="dress-section page-section"
+        id="dress-code"
+        aria-labelledby="dress-title"
+      >
         <div className="section-heading">
           <span className="section-number">03</span>
           <div>
@@ -457,7 +510,10 @@ function Invitation() {
         </div>
         <div className="dress-intro">
           <p>Drape yourselves in royalty.</p>
-          <span>Dress to impress in formal, high-fashion attire featuring rich tones of Black, Metallic Gold, and Deep Red / Burgundy.</span>
+          <span>
+            Dress to impress in formal, high-fashion attire featuring rich tones
+            of Black, Metallic Gold, and Deep Red / Burgundy.
+          </span>
         </div>
         <motion.div
           className="dress-code-panel"
@@ -470,9 +526,10 @@ function Invitation() {
             <p className="dress-code-kicker">The royal palette</p>
             <h3>Make an entrance worthy of the evening.</h3>
             <p>
-              Think sleek silhouettes, immaculate tailoring, and majestic details.
-              Let your look feel polished, dramatic, and unapologetically elegant
-              while staying within the evening&apos;s signature palette.
+              Think sleek silhouettes, immaculate tailoring, and majestic
+              details. Let your look feel polished, dramatic, and
+              unapologetically elegant while staying within the evening&apos;s
+              signature palette.
             </p>
           </div>
           <div className="dress-colors" aria-label="Dress code colors">
@@ -491,22 +548,52 @@ function Invitation() {
           </div>
         </motion.div>
       </section>
+      <h3>DRESS CODE: Strict Formal / Black Tie Elegance</h3>
+      <p>
+        <strong>Color Palette:</strong> Deep Burgundy, Metallic Gold, or Black
+      </p>
+      <p>
+        • <strong>Outfit Rule:</strong> Please select 1 or 2 colors maximum
+        (e.g., All Black, Burgundy & Gold, or Black & Gold). Do not mix all 3
+        colors in one outfit.
+      </p>
+      <p>
+        • <strong>Strict Attire Policy:</strong> Formal wear only (Suits,
+        Tuxedos, Ballgowns, Evening Dresses). Streetwear, denim, sneakers,
+        hoodies, and casual wear are strictly prohibited.
+      </p>
+      <p>
+        • <strong>Tone Note:</strong> Rich, deep tones only; please avoid bright
+        red or bright yellow.
+      </p>
 
-      <section className="gifts-section page-section" id="gifts" aria-labelledby="gifts-title">
+      <section
+        className="gifts-section page-section"
+        id="gifts"
+        aria-labelledby="gifts-title"
+      >
         <div className="gift-panel">
-          <p className="section-eyebrow">If you would like to bring a little something</p>
+          <p className="section-eyebrow">
+            If you would like to bring a little something
+          </p>
           <h2 id="gifts-title">Your presence is enough</h2>
           <p>
-            But for those who insist, Gloria is saving for a few beautiful things for her next
-            chapter. A note in your card is always welcome.
+            But for those who insist, Gloria is happy for a few beautiful things
+            for her next chapter. A note in your card is always welcome.
           </p>
-          <a className="text-link" href="mailto:gloria@example.com?subject=Gloria%27s%20Birthday%20Gift">
-            Ask about the wishlist <span aria-hidden="true">↗</span>
+          <a
+            className="text-link"
+            href="mailto:gloria@example.com?subject=Gloria%27s%20Birthday%20Gift"
+          >
+            Use the buttons below <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
 
-      <section className="pre-rsvp-photo-section page-section" aria-labelledby="pre-rsvp-photo-title">
+      <section
+        className="pre-rsvp-photo-section page-section"
+        aria-labelledby="pre-rsvp-photo-title"
+      >
         <div className="section-heading section-heading-centered">
           <span className="section-number">04</span>
           <div>
@@ -521,11 +608,17 @@ function Invitation() {
 
       <CountdownTimer />
 
-      <section className="rsvp-section page-section" id="rsvp" aria-labelledby="rsvp-title">
+      <section
+        className="rsvp-section page-section"
+        id="rsvp"
+        aria-labelledby="rsvp-title"
+      >
         <FiligreeDivider />
         <p className="section-eyebrow">Kindly reply</p>
         <h2 id="rsvp-title">Will you join us?</h2>
-        <p className="rsvp-copy">We hope to celebrate this beautiful beginning with you.</p>
+        <p className="rsvp-copy">
+          We hope to celebrate this beautiful beginning with you.
+        </p>
         <motion.form
           className="rsvp-form"
           action="https://formspree.io/f/mjybbbwa"
@@ -547,7 +640,10 @@ function Invitation() {
               data-testid="input-rsvp-name"
             />
           </label>
-          <label className="rsvp-field rsvp-field-wide" htmlFor="rsvp-attendance">
+          <label
+            className="rsvp-field rsvp-field-wide"
+            htmlFor="rsvp-attendance"
+          >
             <span>Attendance status</span>
             <select
               id="rsvp-attendance"
@@ -583,7 +679,11 @@ function Invitation() {
               data-testid="input-rsvp-song"
             />
           </label>
-          <button className="rsvp-submit" type="submit" data-testid="button-rsvp-submit">
+          <button
+            className="rsvp-submit"
+            type="submit"
+            data-testid="button-rsvp-submit"
+          >
             Confirm RSVP
           </button>
         </motion.form>
@@ -612,8 +712,8 @@ function Invitation() {
         <ActionButton
           icon={<Shirt size={18} strokeWidth={1.3} />}
           label="Dress Code 👗"
-          onClick={() => revealAction('dress-code')}
-          active={activeAction === 'dress-code'}
+          onClick={() => revealAction("dress-code")}
+          active={activeAction === "dress-code"}
           testId="button-dress-code"
         />
         <ActionButton
