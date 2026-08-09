@@ -375,7 +375,7 @@ function Invitation() {
       >
         <div className="hero-topline">
           <span>G · XVI</span>
-          <span>07 · 11 · 26</span>
+          <span>03 · 10 · 26</span>
         </div>
         <div className="hero-monogram" aria-hidden="true">
           <span>G</span>
@@ -569,7 +569,8 @@ function Invitation() {
             className="text-link"
             href="mailto:gloria@example.com?subject=Gloria%27s%20Birthday%20Gift"
           >
-            Ask about the wishlist <span aria-hidden="true">↗</span>
+            Don't forget to use the buttons below{" "}
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
