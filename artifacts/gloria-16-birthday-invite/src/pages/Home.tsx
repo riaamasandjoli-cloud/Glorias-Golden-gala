@@ -19,8 +19,8 @@ type CountdownValues = {
   seconds: number;
 };
 
-const countdownTarget = new Date("2026-11-07T13:00:00+02:00").getTime();
-const eventDayStart = new Date("2026-11-07T00:00:00+02:00").getTime();
+const countdownTarget = new Date("2026-10-03T13:00:00+02:00").getTime();
+const eventDayStart = new Date("2026-10-03T00:00:00+02:00").getTime();
 
 const eventDetails = {
   date: "3 October 2026",
@@ -40,7 +40,7 @@ const photos = [
   },
   {
     src: "/images/gloria-rsvp.jpg",
-    alt: "Close portrait of Gloria im December",
+    alt: "Close portrait of Gloria in December",
     caption: "the queen of the  party",
   },
 ];
@@ -548,24 +548,65 @@ function Invitation() {
           </div>
         </motion.div>
       </section>
-      <h3>DRESS CODE: Strict Formal / Black Tie Elegance</h3>
-      <p>
-        <strong>Color Palette:</strong> Deep Burgundy, Metallic Gold, or Black
-      </p>
-      <p>
-        • <strong>Outfit Rule:</strong> Please select 1 or 2 colors maximum
-        (e.g., All Black, Burgundy & Gold, or Black & Gold). Do not mix all 3
-        colors in one outfit.
-      </p>
-      <p>
-        • <strong>Strict Attire Policy:</strong> Formal wear only (Suits,
-        Tuxedos, Ballgowns, Evening Dresses). Streetwear, denim, sneakers,
-        hoodies, and casual wear are strictly prohibited.
-      </p>
-      <p>
-        • <strong>Tone Note:</strong> Rich, deep tones only; please avoid bright
-        red or bright yellow.
-      </p>
+      <div
+        style={{
+          border: "2px solid #D4AF37",
+          backgroundColor: "rgba(20, 20, 20, 0.85)",
+          padding: "24px",
+          borderRadius: "12px",
+          color: "#FFFFFF",
+          fontFamily: "sans-serif",
+          margin: "20px 0",
+          boxShadow: "0 4px 15px rgba(212, 175, 55, 0.2)",
+        }}
+      >
+        <h3
+          style={{
+            color: "#D4AF37",
+            fontSize: "1.4rem",
+            letterSpacing: "1px",
+            textAlign: "center",
+            marginTop: "0",
+            marginBottom: "16px",
+            borderBottom: "1px solid #D4AF37",
+            paddingBottom: "8px",
+          }}
+        >
+          DRESS CODE: STRICT FORMAL / BLACK TIE ELEGANCE
+        </h3>
+
+        <p style={{ fontSize: "1rem", marginBottom: "12px", color: "#F3E5AB" }}>
+          <strong style={{ color: "#D4AF37" }}>Color Palette:</strong> Deep
+          Burgundy, Metallic Gold, or Black
+        </p>
+
+        <ul
+          style={{
+            listStyleType: "none",
+            paddingLeft: "0",
+            margin: "0",
+            lineHeight: "1.8",
+          }}
+        >
+          <li style={{ marginBottom: "8px" }}>
+            <strong style={{ color: "#D4AF37" }}>• Outfit Rule:</strong> Select
+            1 or 2 colors maximum (e.g., All Black, Burgundy & Gold, or Black &
+            Gold). Please do not mix all 3 colors in one outfit.
+          </li>
+          <li style={{ marginBottom: "8px" }}>
+            <strong style={{ color: "#D4AF37" }}>
+              • Strict Attire Policy:
+            </strong>{" "}
+            Formal wear only (Suits, Tuxedos, Ballgowns, Evening Dresses).
+            Streetwear, denim, sneakers, hoodies, and casual wear are strictly
+            prohibited.
+          </li>
+          <li>
+            <strong style={{ color: "#D4AF37" }}>• Tone Note:</strong> Rich,
+            deep tones only; please avoid bright red or bright yellow.
+          </li>
+        </ul>
+      </div>
 
       <section
         className="gifts-section page-section"
