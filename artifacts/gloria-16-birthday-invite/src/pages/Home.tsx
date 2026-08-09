@@ -529,7 +529,9 @@ function Invitation() {
               Think sleek silhouettes, immaculate tailoring, and majestic
               details. Let your look feel polished, dramatic, and
               unapologetically elegant while staying within the evening&apos;s
-              signature palette.
+              signature palette. Outfit Rule: Select 1 or 2 colors maximum
+              (e.g., All Black, Burgundy & Gold, or Black & Gold). Please do not
+              mix all 3 colors in one outfit.
             </p>
           </div>
           <div className="dress-colors" aria-label="Dress code colors">
@@ -548,65 +550,6 @@ function Invitation() {
           </div>
         </motion.div>
       </section>
-      <div
-        style={{
-          border: "2px solid #D4AF37",
-          backgroundColor: "rgba(20, 20, 20, 0.85)",
-          padding: "24px",
-          borderRadius: "12px",
-          color: "#FFFFFF",
-          fontFamily: "sans-serif",
-          margin: "20px 0",
-          boxShadow: "0 4px 15px rgba(212, 175, 55, 0.2)",
-        }}
-      >
-        <h3
-          style={{
-            color: "#D4AF37",
-            fontSize: "1.4rem",
-            letterSpacing: "1px",
-            textAlign: "center",
-            marginTop: "0",
-            marginBottom: "16px",
-            borderBottom: "1px solid #D4AF37",
-            paddingBottom: "8px",
-          }}
-        >
-          DRESS CODE: STRICT FORMAL / BLACK TIE ELEGANCE
-        </h3>
-
-        <p style={{ fontSize: "1rem", marginBottom: "12px", color: "#F3E5AB" }}>
-          <strong style={{ color: "#D4AF37" }}>Color Palette:</strong> Deep
-          Burgundy, Metallic Gold, or Black
-        </p>
-
-        <ul
-          style={{
-            listStyleType: "none",
-            paddingLeft: "0",
-            margin: "0",
-            lineHeight: "1.8",
-          }}
-        >
-          <li style={{ marginBottom: "8px" }}>
-            <strong style={{ color: "#D4AF37" }}>• Outfit Rule:</strong> Select
-            1 or 2 colors maximum (e.g., All Black, Burgundy & Gold, or Black &
-            Gold). Please do not mix all 3 colors in one outfit.
-          </li>
-          <li style={{ marginBottom: "8px" }}>
-            <strong style={{ color: "#D4AF37" }}>
-              • Strict Attire Policy:
-            </strong>{" "}
-            Formal wear only (Suits, Tuxedos, Ballgowns, Evening Dresses).
-            Streetwear, denim, sneakers, hoodies, and casual wear are strictly
-            prohibited.
-          </li>
-          <li>
-            <strong style={{ color: "#D4AF37" }}>• Tone Note:</strong> Rich,
-            deep tones only; please avoid bright red or bright yellow.
-          </li>
-        </ul>
-      </div>
 
       <section
         className="gifts-section page-section"
@@ -619,14 +562,14 @@ function Invitation() {
           </p>
           <h2 id="gifts-title">Your presence is enough</h2>
           <p>
-            But for those who insist, Gloria is happy for a few beautiful things
-            for her next chapter. A note in your card is always welcome.
+            But for those who insist, Gloria is saving for a few beautiful
+            things for her next chapter. A note in your card is always welcome.
           </p>
           <a
             className="text-link"
             href="mailto:gloria@example.com?subject=Gloria%27s%20Birthday%20Gift"
           >
-            Use the buttons below <span aria-hidden="true">↗</span>
+            Ask about the wishlist <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
