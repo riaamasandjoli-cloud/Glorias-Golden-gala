@@ -530,8 +530,8 @@ function Invitation() {
               details. Let your look feel polished, dramatic, and
               unapologetically elegant while staying within the evening&apos;s
               signature palette. Outfit Rule: Select 1 or 2 colors maximum
-              (e.g., All Black, All Gold, or Black & Gold or). Please do not
-              mix all 3 colors in one outfit and try to avoid wearing red alone.
+              (e.g., All Black, All Gold, or Black & Gold or). Please do not mix
+              all 3 colors in one outfit and try to avoid wearing red alone.
             </p>
           </div>
           <div className="dress-colors" aria-label="Dress code colors">
@@ -545,7 +545,7 @@ function Invitation() {
             </span>
             <span className="dress-color dress-color-beige">
               <i aria-hidden="true" />
-              <strong>White / Beige</strong>
+              <strong>Red/Burgundy</strong>
             </span>
           </div>
         </motion.div>
