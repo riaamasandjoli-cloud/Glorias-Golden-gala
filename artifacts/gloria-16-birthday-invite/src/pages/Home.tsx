@@ -512,7 +512,7 @@ function Invitation() {
           <p>Drape yourselves in royalty.</p>
           <span>
             Dress to impress in formal, high-fashion attire featuring rich tones
-            of Black, Metallic Gold, and Deep Red / Burgundy.
+            of Black, Metallic Gold, and White/Beige.
           </span>
         </div>
         <motion.div
@@ -530,7 +530,7 @@ function Invitation() {
               details. Let your look feel polished, dramatic, and
               unapologetically elegant while staying within the evening&apos;s
               signature palette. Outfit Rule: Select 1 or 2 colors maximum
-              (e.g., All Black, Burgundy & Gold, or Black & Gold). Please do not
+              (e.g., All Black, All Gold, or Black & Gold or black and white). Please do not
               mix all 3 colors in one outfit.
             </p>
           </div>
@@ -543,9 +543,9 @@ function Invitation() {
               <i aria-hidden="true" />
               <strong>Metallic Gold</strong>
             </span>
-            <span className="dress-color dress-color-burgundy">
+            <span className="dress-color dress-color-beige">
               <i aria-hidden="true" />
-              <strong>Deep Red / Burgundy</strong>
+              <strong>White / Beige</strong>
             </span>
           </div>
         </motion.div>
@@ -562,7 +562,7 @@ function Invitation() {
           </p>
           <h2 id="gifts-title">Your presence is enough</h2>
           <p>
-            But for those who insist, Gloria is saving for a few beautiful
+            But for those who insist, Gloria is grateful for a few beautiful
             things for her next chapter. A note in your card is always welcome.
           </p>
           <a
