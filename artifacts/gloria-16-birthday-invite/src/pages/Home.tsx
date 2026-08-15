@@ -512,7 +512,7 @@ function Invitation() {
           <p>Drape yourselves in royalty.</p>
           <span>
             Dress to impress in formal, high-fashion attire featuring rich tones
-            of Black, Metallic Gold, and White/Beige.
+            of Black, Metallic Gold, and Red/Burgundy.
           </span>
         </div>
         <motion.div
@@ -530,8 +530,8 @@ function Invitation() {
               details. Let your look feel polished, dramatic, and
               unapologetically elegant while staying within the evening&apos;s
               signature palette. Outfit Rule: Select 1 or 2 colors maximum
-              (e.g., All Black, All Gold, or Black & Gold or black and white). Please do not
-              mix all 3 colors in one outfit.
+              (e.g., All Black, All Gold, or Black & Gold or). Please do not
+              mix all 3 colors in one outfit and try to avoid wearing red alone.
             </p>
           </div>
           <div className="dress-colors" aria-label="Dress code colors">
